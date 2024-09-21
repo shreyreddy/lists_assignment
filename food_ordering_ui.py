@@ -15,7 +15,7 @@ def show_main_menu():
       break
     elif user_menu_choice in 'Xx':
       print('This option prints the list of items ordered, extended price, total, Taxes, and Grand total ')
- 
+      print_check(your_order)
     elif user_menu_choice in 'Cc':
        your_order=change_order(your_order)
 
@@ -67,6 +67,16 @@ def change_order(order):
             #order[i] = (code+name, new_quantity, price)
             break
     return order
+def print_check(order):
+    print("Here is your check:")
+    subtot = functions.calculate_subtotal(order)
+    tax = subtot * 0.065  # Assuming 6.5% tax
+    total = subtot + tax
+    functions.display_current_order(order)
+    print(f"Subtotal: ${subtot:.2f}")
+    print(f"Tax: ${tax:.2f}")
+    print(f"Total: ${total:.2f}")  
+
 
 
 
